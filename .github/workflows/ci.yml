@@ -1,0 +1,29 @@
+name: 实验8 自动训练评测
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  mlp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: 训练 MLP 并评测
+        run: python mlp-digits/ci_eval_mlp.py
+
+  mnist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: 训练 MNIST 网络并评测
+        run: python mnist-tf/ci_mnist_tf.py

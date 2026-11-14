@@ -1,0 +1,5 @@
+在命令行环境下安装 Python 第三方库。
+
+方式1：pip install tensorflow -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+方式2：pip install "protobuf<3.20.0" "tensorflow==2.3.0"
